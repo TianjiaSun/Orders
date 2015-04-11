@@ -162,7 +162,7 @@ nav ul li:hover > ul {
   font-size: 16px;
   line-height: 34px;
   padding-left: 12px;
-  width: calc(100vw - 335px);
+  width: calc(100vw - 203px);
   color: rgb(0, 0, 0);
   height: 34px;
   border-radius: 7px;
@@ -172,7 +172,7 @@ nav ul li:hover > ul {
   background: rgb(230, 230, 230);
   position: absolute;
   top: 9px;
-  left: 300px;
+  left: 168px;
 }
 
 .search_bar_input:focus{
@@ -236,7 +236,7 @@ cursor: pointer;
   line-height: 35px;
   text-align: center;
   left: 0px;
-  min-width: 120px;
+  min-width: 130px;
   width: auto;
   font-family: arial;
   font-size: 19px;
