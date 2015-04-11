@@ -3,99 +3,137 @@
 var store = angular.module('store',['ngRoute'])
   .controller('StoreListCtrl', function($scope, $http, $route, $routeParams, $sce, $timeout) {
 
-  $scope.header = "Top Solutions";
+  $scope.LargeCards_flag = false;
+  $scope.MediumCards_flag = true;
+  $scope.SmallCards_flag = false;
 
-  // get app info from ASA
-  var req_app = {
+  $scope.full_screen_edit = false;
+  $scope.full_screen_camera = false;
+  $scope.full_screen_vendor = false;
+  $scope.full_screen_packaging = false;
+
+  $scope.data;
+  var req = {
     method: 'POST',
     url: 'http://asa.gausian.com',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
-    data: $.param({user_app_id:'app_id', service_app_name:'UserAppInfo', request_string: "get"})
+    data: $.param({user_app_id:'app_id', service_app_name:'Product', request_string: "get"})
   };
-  
-  $http(req_app).success(function(data) {
-    $scope.apps = angular.fromJson(data.response);
-    console.log($scope.apps);
-    
-    // get solutions info from ASA
-    // only do this after get apps info from ASA
-    var req_sol = {
-      method: 'POST',
-      url: 'http://asa.gausian.com',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      data: $.param({user_app_id:'app_id', service_app_name:'Solution', request_string: "get"})
-    };
-    $http(req_sol).success(function(data) {
-      $scope.solutions = angular.fromJson(data.response);
-      console.log("original solutions from ASA");
-      console.log($scope.solutions);
-      // console.log($scope.solutions);
 
-      // append solution with their apps
-      // loop every solution
-      for(var i=0; i<$scope.solutions.length; i++){
-        $scope.solutions[i].app_array = [];
-        var solution = $scope.solutions[i];
-        var solution_apps_string_array = solution.apps.split(',');
-        // loop every app in the solution
-        for(var k=0; k<solution_apps_string_array.length; k++){
-          // find the app from ASA returned info
-          for(var h=0; h<$scope.apps.length; h++){
-            if($scope.apps[h].id === solution_apps_string_array[k]){
-              //console.log("matched");
-              //console.log($scope.apps[h].id);
-              $scope.solutions[i].app_array.push($scope.apps[h]);
-            }
-          }
-        }
-      }
-      console.log("solutions is connected with apps");
-      console.log($scope.solutions);
-
-      // open Top Solution page
-      // only do this after get solutions info from ASA
-      $scope.filterredSolutions = [];
-      var j=0;
-      for(var i=0; i<$scope.solutions.length; i++){
-        var solution = $scope.solutions[i];
-        // scope.header === Top Solutions at this moment
-        if(solution.catalog.match($scope.header)){
-          $scope.filterredSolutions[j++] = solution;
-        }
-      }
-    });
+  // get product info from ASA
+  $http(req).success(function(data) {
+    $scope.products = angular.fromJson(data.response);
   });
 
   // to avoid flashing during page loading
   $scope.init = function () {
-    $("#byBusiness_container").fadeIn(1000);
+    $("#list_container").fadeIn(1000);
   };
 
-  // open share solution dialog
-  $scope.new_solution = function() {
-    $("#Share_container").fadeIn(300);
+  // change to large cards
+  $scope.LargeCards = function () {
+    $scope.LargeCards_flag = true;
+    $scope.MediumCards_flag = false;
+    $scope.SmallCards_flag = false;
   }
 
-  // close share info dialog
-  $scope.close_new_solution = function() {
-    $("#Share_container").hide();
+  // change to large cards
+  $scope.MediumCards = function () {
+    $scope.LargeCards_flag = false;
+    $scope.MediumCards_flag = true;
+    $scope.SmallCards_flag = false;
   }
 
-  // show by Business Page
-  $scope.allSolutions = function() {
-    $("#search_container").hide();
-    $("#list_container").hide();
-    $("#byBusiness_container").fadeIn(500);
+  // change to large cards
+  $scope.SmallCards = function () {
+    $scope.LargeCards_flag = false;
+    $scope.MediumCards_flag = false;
+    $scope.SmallCards_flag = true;
   }
 
-  // install a solution
-  $scope.install = function(solution) {
-    alert("install app id: " + solution.apps);
+  // toggle product enalbe
+  $scope.enableToggle = function(product) {
+    if(product.enable==="true") {
+      product.enable="false";
+    }
+    else {
+      product.enable="true";
+    }
   }
+
+  $scope.full_edit = function() {
+    $scope.full_screen_edit = true;
+    $scope.full_screen_camera = false;
+    $scope.full_screen_vendor = false;
+    $scope.full_screen_packaging = false;
+    $("#full_screen_overlay").fadeIn(400);
+  }
+
+  $scope.full_camera = function() {
+    $scope.full_screen_edit = false;
+    $scope.full_screen_camera = true;
+    $scope.full_screen_vendor = false;
+    $scope.full_screen_packaging = false;
+    $("#full_screen_overlay").fadeIn(400);
+  }
+
+  $scope.full_vendor = function() {
+    $scope.full_screen_edit = false;
+    $scope.full_screen_camera = false;
+    $scope.full_screen_vendor = true;
+    $scope.full_screen_packaging = false;
+    $("#full_screen_overlay").fadeIn(400);
+  }
+
+  $scope.full_packaging = function() {
+    $scope.full_screen_edit = false;
+    $scope.full_screen_camera = false;
+    $scope.full_screen_vendor = false;
+    $scope.full_screen_packaging = true;
+    $("#full_screen_overlay").fadeIn(400);
+  }
+
+  $scope.switch_to_edit = function () {
+    $scope.full_screen_edit = true;
+    $scope.full_screen_camera = false;
+    $scope.full_screen_vendor = false;
+    $scope.full_screen_packaging = false;
+  }
+
+  $scope.switch_to_camera = function () {
+    $scope.full_screen_edit = false;
+    $scope.full_screen_camera = true;
+    $scope.full_screen_vendor = false;
+    $scope.full_screen_packaging = false;
+  }
+
+  $scope.switch_to_vendor = function () {
+    $scope.full_screen_edit = false;
+    $scope.full_screen_camera = false;
+    $scope.full_screen_vendor = true;
+    $scope.full_screen_packaging = false;
+  }
+
+  $scope.switch_to_packaging = function () {
+    $scope.full_screen_edit = false;
+    $scope.full_screen_camera = false;
+    $scope.full_screen_vendor = false;
+    $scope.full_screen_packaging = true;
+  }    
+
+  $scope.close_full_screen = function() {
+    $("#full_screen_overlay").hide();
+    $scope.full_screen_edit = false;
+    $scope.full_screen_camera = false;
+    $scope.full_screen_vendor = false;
+    $scope.full_screen_packaging = false;
+  }
+
+/*
+
+
 
   // open detail page for one app
   $scope.openApp = function(app) {
@@ -107,6 +145,10 @@ var store = angular.module('store',['ngRoute'])
     $("#movein_container").show();
     // secondly show iframe container
     $timeout(function(){ $("#overlay_container").fadeIn(500); }, 550);
+  }
+
+  $scope.install_this_app = function() {
+    alert($scope.app.id);
   }
 
   $scope.closeApp = function() {
@@ -121,16 +163,15 @@ var store = angular.module('store',['ngRoute'])
 
   $scope.filterCAT = function(catalog) {
     $scope.header = catalog;
-    $("#byBusiness_container").hide();
     $("#search_container").hide();
     $("#list_container").hide();
     // filter with catalog info
-    $scope.filterredSolutions = [];
+    $scope.filterredApps = [];
     var j=0;
-    for(var i=0; i<$scope.solutions.length; i++){
-      var solution = $scope.solutions[i];
-      if(solution.catalog.match($scope.header)){
-        $scope.filterredSolutions[j++] = solution;
+    for(var i=0; i<$scope.apps.length; i++){
+      var app = $scope.apps[i];
+      if(app.catalog.match($scope.header)){
+        $scope.filterredApps[j++] = app;
       }
     }
     $("#list_container").fadeIn(500);
@@ -141,34 +182,32 @@ var store = angular.module('store',['ngRoute'])
     // if enter is input in search box
     if (keyEvent.which === 13){
       // hide list page
-      $("#byBusiness_container").hide();
       $("#list_container").hide();
       $("#search_container").hide();
-      $scope.searchedSolution = [];
+      $scope.searchedApps = [];
       var j=0;
-      for(var i=0; i<$scope.solutions.length; i++){
-        var solution = $scope.solutions[i];
-        if(solution.keyword.match(angular.lowercase($scope.query))){
-          $scope.searchedSolution[j++] = solution;
+      for(var i=0; i<$scope.apps.length; i++){
+        var app = $scope.apps[i];
+        if(app.keyword.match(angular.lowercase($scope.query))){
+          $scope.searchedApps[j++] = app;
         }
       }
       $("#search_container").fadeIn(500);
-      if($scope.searchedSolution.length === 0) {
-        $scope.search_header = "Sorry, no matching solution.";
+      if($scope.searchedApps.length === 0) {
+        $scope.search_header = "Sorry, no matching APP.";
       }
-      else if($scope.searchedSolution.length === 1) {
+      else if($scope.searchedApps.length === 1) {
         $scope.search_header = "There is one result:";
       }
       else {
-        $scope.search_header = "There are " + $scope.searchedSolution.length + " results:";
+        $scope.search_header = "There are " + $scope.searchedApps.length + " results:";
       }
     }
     // if escape is input in search box
     if (keyEvent.which === 27){
       // close search result
       $("#search_container").hide();
-      $("#list_container").hide();
-      $("#byBusiness_container").fadeIn(500);
+      $("#list_container").fadeIn(500);
       $scope.search_header = null;
       $scope.query = null;
     }
@@ -176,27 +215,26 @@ var store = angular.module('store',['ngRoute'])
 
   $scope.ClickSearch = function() {
     // hide list page
-    $("#byBusiness_container").hide();
     $("#list_container").hide();
     $("#search_container").hide();
-    $scope.searchedSolution = [];
+    $scope.searchedApps = [];
     var j=0;
-    for(var i=0; i<$scope.solutions.length; i++){
-      var solution = $scope.solutions[i];
-      if(solution.keyword.match(angular.lowercase($scope.query))){
-        $scope.searchedSolution[j++] = solution;
+    for(var i=0; i<$scope.apps.length; i++){
+      var app = $scope.apps[i];
+      if(app.keyword.match($scope.query)){
+        $scope.searchedApps[j++] = app;
       }
     }
-    $("#search_container").fadeIn(500);
-    if($scope.searchedSolution.length === 0) {
-      $scope.search_header = "Sorry, no matching solution.";
+    if($scope.searchedApps.length === 0) {
+      $scope.search_header = "Sorry, no matching APP.";
     }
-    else if($scope.searchedSolution.length === 1) {
+    else if($scope.searchedApps.length === 1) {
       $scope.search_header = "There is one result:";
     }
     else {
-      $scope.search_header = "There are " + $scope.searchedSolution.length + " results:";
+      $scope.search_header = "There are " + $scope.searchedApps.length + " results:";
     }
-  }
+    $("#search_container").fadeIn(500);
+  }*/
 
 })
