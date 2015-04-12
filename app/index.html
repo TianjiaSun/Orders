@@ -99,34 +99,44 @@
 
       <!-- This is app icon links -->
       <div class="app_icon_container">
-          <img  class="app_icon_medium"
+          <img  ng-class="{
+                'app_icon_medium': order.expand_edit===false || order.expand===false, 
+                'app_icon_medium_active': order.expand_edit===true && order.expand===true
+                }"
                 src="img/edit.png"
-                ng-click="order.expand=true;"
-                ng-mouseover=" 
+                ng-click="order.expand=true;
                 order.expand_edit=true; order.expand_product=false; order.expand_shipment=false; order.expand_inventory=false; order.expand_customer=false;"
                 ng-init="order.expand_edit=true;"/>
-          <img  class="app_icon_medium"
+          <img  ng-class="{
+                'app_icon_medium': order.expand_product===false || order.expand===false, 
+                'app_icon_medium_active': order.expand_product===true && order.expand===true
+                }"
                 src="img/product.png"
-                ng-click="openApp(order.expand); order.expand=true;"
-                ng-mouseover="
+                ng-click="order.expand=true;
                 order.expand_edit=false; order.expand_product=true; order.expand_shipment=false; order.expand_inventory=false; order.expand_customer=false;"
                 ng-init="order.expand_product=false;"/>   
-          <img  class="app_icon_medium"
+          <img  ng-class="{
+                'app_icon_medium': order.expand_shipment===false || order.expand===false, 
+                'app_icon_medium_active': order.expand_shipment===true && order.expand===true
+                }"
                 src="img/shipment.png"
-                ng-click="openApp(order.expand); order.expand=true;"
-                ng-mouseover="
+                ng-click="order.expand=true;
                 order.expand_edit=false; order.expand_product=false; order.expand_shipment=true; order.expand_inventory=false; order.expand_customer=false;"
                 ng-init="order.expand_product=false;"/>
-          <img  class="app_icon_medium"
+          <img  ng-class="{
+                'app_icon_medium': order.expand_inventory===false || order.expand===false, 
+                'app_icon_medium_active': order.expand_inventory===true && order.expand===true
+                }"
                 src="img/inventory.png"
-                ng-click="openApp(order.expand); order.expand=true;"
-                ng-mouseover="
+                ng-click="order.expand=true;
                 order.expand_edit=false; order.expand_product=false; order.expand_shipment=false; order.expand_inventory=true; order.expand_customer=false;"
                 ng-init="order.expand_product=false;"/> 
-          <img  class="app_icon_medium"
+          <img  ng-class="{
+                'app_icon_medium': order.expand_customer===false || order.expand===false, 
+                'app_icon_medium_active': order.expand_customer===true && order.expand===true
+                }"
                 src="img/customer.png"
-                ng-click="openApp(order.expand); order.expand=true;"
-                ng-mouseover=" 
+                ng-click="order.expand=true;
                 order.expand_edit=false; order.expand_product=false; order.expand_shipment=false; order.expand_inventory=false; order.expand_customer=true;"
                 ng-init="order.expand_product=false;"/> 
           <img  class="app_icon_medium"

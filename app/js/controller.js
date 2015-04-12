@@ -32,25 +32,17 @@ var store = angular.module('store',['ngRoute'])
     $scope.showOrders_flag = true;
     $scope.showShipped_flag = false;
     $scope.showCancelled_flag = false;
-  }
+  };
   $scope.showShipped = function () {
     $scope.showOrders_flag = false;
     $scope.showShipped_flag = true;
     $scope.showCancelled_flag = false;
-  }
+  };
   $scope.showCancelled = function () {
     $scope.showOrders_flag = false;
     $scope.showShipped_flag = false;
     $scope.showCancelled_flag = true;
-  }
-
-  // open APP
-  $scope.openApp = function (current_expand_status) {
-    // only active another app when the order has been expanded.
-    if(current_expand_status === true) {
-      alert("openApp");
-    }
-  }
+  };
 
 
 })

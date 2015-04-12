@@ -467,16 +467,47 @@ position: relative;
   transition: 0.2s ease-in-out;
 }
 .app_icon_medium:hover {
-  top: 3px;
+  top: 5px;
   box-shadow: 0 3px 12px 2px rgb(85, 85, 85);
   cursor: pointer;
-  -webkit-transform: scale(1.15) rotate(8deg);
-  -moz-transform: scale(1.15) rotate(8deg);
-  -o-transform: scale(1.15) rotate(8deg);
-  -ms-transform: scale(1.15) rotate(8deg);
-  transform: scale(1.15) rotate(8deg);
+  -webkit-transform: scale(1.18) rotate(8deg);
+  -moz-transform: scale(1.18) rotate(8deg);
+  -o-transform: scale(1.18) rotate(8deg);
+  -ms-transform: scale(1.18) rotate(8deg);
+  transform: scale(1.18) rotate(8deg);
   z-index: 1;
   opacity: 1;
+}
+
+.app_icon_medium_active {
+  position: relative;
+  float: left;
+  right: 7px;
+  width: 50px;
+  height: 50px;
+  min-height: 32px;
+  min-width: 32px;
+  border-radius: 5px;
+  background: rgb(230, 230, 230);
+  margin: 6px;
+  border-radius: 0.6vw;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  top: 5px;
+  box-shadow: 0 3px 12px 2px rgb(85, 85, 85);
+  -webkit-transform: scale(1.18) rotate(8deg);
+  -moz-transform: scale(1.18) rotate(8deg);
+  -o-transform: scale(1.18) rotate(8deg);
+  -ms-transform: scale(1.18) rotate(8deg);
+  transform: scale(1.18) rotate(8deg);
+  z-index: 1;
+  opacity: 1;
+}
+
+.app_icon_medium_active:hover {
+  cursor: pointer;
 }
 
 .expand_container {
@@ -526,6 +557,11 @@ position: relative;
   font-family: arial;
   font-size: 20px;
   color: rgb(98, 98, 98);
+  margin-right: -12px;
+}
+
+.Product_count {
+  cursor: pointer;
 }
 
 
