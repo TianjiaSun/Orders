@@ -45,8 +45,11 @@ var store = angular.module('store',['ngRoute'])
   }
 
   // open APP
-  $scope.openApp = function () {
-    $scope.expand_from_icon = true;
+  $scope.openApp = function (current_expand_status) {
+    // only active another app when the order has been expanded.
+    if(current_expand_status === true) {
+      alert("openApp");
+    }
   }
 
 

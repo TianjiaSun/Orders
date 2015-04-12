@@ -69,7 +69,7 @@
 
   <!-- This is add new order --> 
   <div class="order_unit">
-    <div class="order_content">
+    <div class="order_content_without_color_change">
       <img class="add_order_img_gray" src="img/add_order_gray.png"/>
       <img class="add_order_img" src="img/add_order.png"/>
       <div class="add_order_text">Add an order manually</div>
@@ -101,32 +101,32 @@
       <div class="app_icon_container">
           <img  class="app_icon_medium"
                 src="img/edit.png"
-                ng-click="openApp()"
-                ng-mouseover="order.expand=true; 
+                ng-click="order.expand=true;"
+                ng-mouseover=" 
                 order.expand_edit=true; order.expand_product=false; order.expand_shipment=false; order.expand_inventory=false; order.expand_customer=false;"
                 ng-init="order.expand_edit=true;"/>
           <img  class="app_icon_medium"
                 src="img/product.png"
-                ng-click="openApp()"
-                ng-mouseover="order.expand=true; 
+                ng-click="openApp(order.expand); order.expand=true;"
+                ng-mouseover="
                 order.expand_edit=false; order.expand_product=true; order.expand_shipment=false; order.expand_inventory=false; order.expand_customer=false;"
                 ng-init="order.expand_product=false;"/>   
           <img  class="app_icon_medium"
                 src="img/shipment.png"
-                ng-click="openApp()"
-                ng-mouseover="order.expand=true; 
+                ng-click="openApp(order.expand); order.expand=true;"
+                ng-mouseover="
                 order.expand_edit=false; order.expand_product=false; order.expand_shipment=true; order.expand_inventory=false; order.expand_customer=false;"
                 ng-init="order.expand_product=false;"/>
           <img  class="app_icon_medium"
                 src="img/inventory.png"
-                ng-click="openApp()"
-                ng-mouseover="order.expand=true; 
+                ng-click="openApp(order.expand); order.expand=true;"
+                ng-mouseover="
                 order.expand_edit=false; order.expand_product=false; order.expand_shipment=false; order.expand_inventory=true; order.expand_customer=false;"
                 ng-init="order.expand_product=false;"/> 
           <img  class="app_icon_medium"
                 src="img/customer.png"
-                ng-click="openApp()"
-                ng-mouseover="order.expand=true; 
+                ng-click="openApp(order.expand); order.expand=true;"
+                ng-mouseover=" 
                 order.expand_edit=false; order.expand_product=false; order.expand_shipment=false; order.expand_inventory=false; order.expand_customer=true;"
                 ng-init="order.expand_product=false;"/> 
           <img  class="app_icon_medium"
@@ -136,18 +136,28 @@
 
       <!-- This is expand containers -->
       <div class="expand_container">
+
         <div class="detail_container" ng-show="order.expand_edit==true">
           <div class="detail_header">Order Detail</div>
         </div>
+
         <div class="detail_container" ng-show="order.expand_product==true">
-          <div class="detail_header">Ordered Products</div>
+          <iframe class="Products_plugview_container fadeIn fadeIn-50ms" frameBorder="0"
+            src="http://tianjiasun.github.io/Products_plugview/app/index.html#/open=1"></iframe>
+          <div class="Product_count fadeIn fadeIn-50ms">X1</div>
+          <iframe class="Products_plugview_container fadeIn fadeIn-50ms" frameBorder="0"
+            src="http://tianjiasun.github.io/Products_plugview/app/index.html#/open=2"></iframe>
+          <div class="Product_count fadeIn fadeIn-50ms">X2</div>
         </div>
+
         <div class="detail_container" ng-show="order.expand_shipment==true">
           <div class="detail_header">Shipment & Tracking</div>
         </div>
+
         <div class="detail_container" ng-show="order.expand_inventory==true">
           <div class="detail_header">Inventory Remain</div>
         </div>
+
         <div class="detail_container" ng-show="order.expand_customer==true">
           <div class="detail_header">Customer Service</div>
         </div>

@@ -253,7 +253,7 @@ position: relative;
 }
 
 .order_unit_expand {
-  height: 300px;
+  height: 331px;
   -webkit-transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;
@@ -285,6 +285,19 @@ position: relative;
   cursor: pointer;
 }
 
+.order_content_without_color_change {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(100% - 4px);
+  height: 70px;
+  background: rgb(248, 248, 248);
+}
+
+.order_content_without_color_change:hover {
+  cursor: pointer;
+}
+
 .add_order_img {
   position: absolute;
   top: 0px;
@@ -309,8 +322,7 @@ position: relative;
   left: 65px;
   font-size: 19px;
   font-family: arial;
-  font-weight: bold;
-  color: white;
+  color: rgb(160, 160, 160);
   opacity: 0;
 }
 
@@ -386,6 +398,7 @@ position: relative;
   -moz-transition: 0.4s ease-in-out;
   -o-transition: 0.4s ease-in-out;
   transition: 0.4s ease-in-out;
+  transition-delay: 0s;
 }
 
 .expand_header {
@@ -395,12 +408,12 @@ position: relative;
 .order_unit:hover{
   background: rgb(109, 188, 245);
 }
-.order_unit:hover .add_order_img {
+/*.order_unit:hover .add_order_img {
   opacity: 1;
 }
 .order_unit:hover .add_order_img_gray {
   opacity: 0;
-}
+}*/
 .order_unit:hover .add_order_text {
   opacity: 1;
 }
@@ -408,6 +421,8 @@ position: relative;
   background: rgb(109, 188, 245);
 }
 .order_unit:hover .app_icon_container {
+/*  right: 0px;
+  transition-delay: 0.4s;*/
   opacity: 1;
 }
 .order_unit:hover .order_time {
@@ -468,7 +483,7 @@ position: relative;
   top: 74px;
   position: absolute;
   left: 2px;
-  height: 224px;
+  height: 254px;
   width: calc(100% - 4px);
   background: transparent;
 }
@@ -479,6 +494,7 @@ position: relative;
   left: 0px;
   width: 100%;
   height: 100%;
+  padding-left: 10px;
   background: white;
 }
 
@@ -492,6 +508,24 @@ position: relative;
   font-family: arial;
   font-size: 18px;
   color: rgb(29, 29, 29);
+}
+
+.Product_count {
+  position: relative;
+  float: left;
+  top: 13px;
+  left: -16px;
+  width: 51px;
+  height: 45px;
+  background: rgb(232, 232, 232);
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%;
+  line-height: 45px;
+  padding-left: 0px;
+  text-align: center;
+  font-family: arial;
+  font-size: 20px;
+  color: rgb(98, 98, 98);
 }
 
 
@@ -618,4 +652,14 @@ position: relative;
 
 :-ms-input-placeholder {  
    color: rgb(130,130,130);
+}
+
+.Products_plugview_container {
+  position: relative;
+  float: left;
+  top: 0px;
+  height: 250px;
+  width: 250px;
+  left: 0px;
+  margin: 0px;
 }
