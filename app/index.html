@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
-  <title>Products</title>
+  <title>Orders</title>
 </head>
 <body data-ng-controller="StoreListCtrl" data-ng-init="init()" style="overflow: hidden;">
 <div class="whole_container">
@@ -41,11 +41,119 @@
 
     <!-- This is category Bar -->
     <div class="category_container">
-      <div class="category_unit category_unit_selected" ng-click="showOrders()">Orders</div>
-      <div class="category_unit" ng-click="showShipped()">Shipped</div>
-      <div class="category_unit" ng-click="showCancelled()">Cancelled</div>
+      <div ng-class="{
+        'category_unit_selected': showOrders_flag===true,
+        'category_unit': true,
+        'fadeIn': true,
+        'fadeIn-100ms': true}" 
+        ng-click="showOrders()">
+        Orders (4)
+      </div>
+      <div ng-class="{
+        'category_unit_selected': showShipped_flag===true,
+        'category_unit': true,
+        'fadeIn': true,
+        'fadeIn-100ms': true}" 
+        ng-click="showShipped()">
+        Shipped (0)
+      </div>
+      <div ng-class="{
+        'category_unit_selected': showCancelled_flag===true,
+        'category_unit': true,
+        'fadeIn': true,
+        'fadeIn-100ms': true}" 
+        ng-click="showCancelled()">
+        Cancelled (0)
+      </div>
     </div>
 
+  <!-- This is add new order --> 
+  <div class="order_unit">
+    <div class="order_content">
+      <img class="add_order_img_gray" src="img/add_order_gray.png"/>
+      <img class="add_order_img" src="img/add_order.png"/>
+      <div class="add_order_text">Add an order manually</div>
+    </div>
+  </div>
+
+  <!-- This is order list -->
+  <div ng-repeat="order in orders | orderBy:'id'">
+    <div 
+      ng-class="{
+        'order_unit': true, 
+        'order_unit_expand': order.expand===true
+        }" 
+      ng-init="order.expand=false;">
+
+      <!-- This is order brief info -->
+      <div 
+        class="order_content"       
+        ng-click="order.expand=!order.expand;">
+        <div class="order_time">02/11/2015 <span style="font-size: 13px;">13:43</span></div>
+        <div class="order_from">Amazon  <span style="font-size: 12px;">#114-0684189-7053857</span></div>
+        <div class="order_total">TOTAL</div>
+        <div class="order_total_price">$123.00</div>
+        <div class="order_shipto">SHIP TO</div>
+        <div class="order_shipto_address">3113 Mount Isabel Drive, San Jose, CA, US. 95148</div>
+      </div>
+
+      <!-- This is app icon links -->
+      <div class="app_icon_container">
+          <img  class="app_icon_medium"
+                src="img/edit.png"
+                ng-click="openApp()"
+                ng-mouseover="order.expand=true; 
+                order.expand_edit=true; order.expand_product=false; order.expand_shipment=false; order.expand_inventory=false; order.expand_customer=false;"
+                ng-init="order.expand_edit=true;"/>
+          <img  class="app_icon_medium"
+                src="img/product.png"
+                ng-click="openApp()"
+                ng-mouseover="order.expand=true; 
+                order.expand_edit=false; order.expand_product=true; order.expand_shipment=false; order.expand_inventory=false; order.expand_customer=false;"
+                ng-init="order.expand_product=false;"/>   
+          <img  class="app_icon_medium"
+                src="img/shipment.png"
+                ng-click="openApp()"
+                ng-mouseover="order.expand=true; 
+                order.expand_edit=false; order.expand_product=false; order.expand_shipment=true; order.expand_inventory=false; order.expand_customer=false;"
+                ng-init="order.expand_product=false;"/>
+          <img  class="app_icon_medium"
+                src="img/inventory.png"
+                ng-click="openApp()"
+                ng-mouseover="order.expand=true; 
+                order.expand_edit=false; order.expand_product=false; order.expand_shipment=false; order.expand_inventory=true; order.expand_customer=false;"
+                ng-init="order.expand_product=false;"/> 
+          <img  class="app_icon_medium"
+                src="img/customer.png"
+                ng-click="openApp()"
+                ng-mouseover="order.expand=true; 
+                order.expand_edit=false; order.expand_product=false; order.expand_shipment=false; order.expand_inventory=false; order.expand_customer=true;"
+                ng-init="order.expand_product=false;"/> 
+          <img  class="app_icon_medium"
+                ng-click="newApp()"
+                src="img/add_link.png"/> 
+      </div>
+
+      <!-- This is expand containers -->
+      <div class="expand_container">
+        <div class="detail_container" ng-show="order.expand_edit==true">
+          <div class="detail_header">Order Detail</div>
+        </div>
+        <div class="detail_container" ng-show="order.expand_product==true">
+          <div class="detail_header">Ordered Products</div>
+        </div>
+        <div class="detail_container" ng-show="order.expand_shipment==true">
+          <div class="detail_header">Shipment & Tracking</div>
+        </div>
+        <div class="detail_container" ng-show="order.expand_inventory==true">
+          <div class="detail_header">Inventory Remain</div>
+        </div>
+        <div class="detail_container" ng-show="order.expand_customer==true">
+          <div class="detail_header">Customer Service</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   </div>

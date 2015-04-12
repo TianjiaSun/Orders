@@ -3,14 +3,9 @@
 var store = angular.module('store',['ngRoute'])
   .controller('StoreListCtrl', function($scope, $http, $route, $routeParams, $sce, $timeout) {
 
-  $scope.LargeCards_flag = false;
-  $scope.MediumCards_flag = true;
-  $scope.SmallCards_flag = false;
-
-  $scope.full_screen_edit = false;
-  $scope.full_screen_camera = false;
-  $scope.full_screen_vendor = false;
-  $scope.full_screen_packaging = false;
+  $scope.showOrders_flag = true;
+  $scope.showShipped_flag = false;
+  $scope.showCancelled_flag = false;
 
   $scope.data;
   var req = {
@@ -24,7 +19,7 @@ var store = angular.module('store',['ngRoute'])
 
   // get product info from ASA
   $http(req).success(function(data) {
-    $scope.products = angular.fromJson(data.response);
+    $scope.orders = angular.fromJson(data.response);
   });
 
   // to avoid flashing during page loading
@@ -32,6 +27,27 @@ var store = angular.module('store',['ngRoute'])
     $("#list_container").fadeIn(1000);
   };
 
-  // 
+  // show three cagetory
+  $scope.showOrders = function () {
+    $scope.showOrders_flag = true;
+    $scope.showShipped_flag = false;
+    $scope.showCancelled_flag = false;
+  }
+  $scope.showShipped = function () {
+    $scope.showOrders_flag = false;
+    $scope.showShipped_flag = true;
+    $scope.showCancelled_flag = false;
+  }
+  $scope.showCancelled = function () {
+    $scope.showOrders_flag = false;
+    $scope.showShipped_flag = false;
+    $scope.showCancelled_flag = true;
+  }
+
+  // open APP
+  $scope.openApp = function () {
+    $scope.expand_from_icon = true;
+  }
+
 
 })
