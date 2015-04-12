@@ -91,10 +91,20 @@
         ng-click="order.expand=!order.expand;">
         <div class="order_time">02/11/2015 <span style="font-size: 13px;">13:43</span></div>
         <div class="order_from">Amazon  <span style="font-size: 12px;">#114-0684189-7053857</span></div>
+        <img  ng-class="{
+              'cancelled_no': showCancelled_flag===false, 
+              'cancelled_yes': showCancelled_flag===true
+              }"
+              src="img/cancelled_2.png"/>
         <div class="order_total">TOTAL</div>
         <div class="order_total_price">$123.00</div>
         <div class="order_shipto">SHIP TO</div>
         <div class="order_shipto_address">3113 Mount Isabel Drive, San Jose, CA, US. 95148</div>
+        <img  ng-class="{
+              'shipped_no': showShipped_flag===false, 
+              'shipped_yes': showShipped_flag===true
+              }"
+              src="img/shipped_2.png"/>
       </div>
 
       <!-- This is app icon links -->
@@ -122,7 +132,7 @@
                 src="img/shipment.png"
                 ng-click="order.expand=true;
                 order.expand_edit=false; order.expand_product=false; order.expand_shipment=true; order.expand_inventory=false; order.expand_customer=false;"
-                ng-init="order.expand_product=false;"/>
+                ng-init="order.expand_shipment=false;"/>
           <img  ng-class="{
                 'app_icon_medium': order.expand_inventory===false || order.expand===false, 
                 'app_icon_medium_active': order.expand_inventory===true && order.expand===true
@@ -130,7 +140,7 @@
                 src="img/inventory.png"
                 ng-click="order.expand=true;
                 order.expand_edit=false; order.expand_product=false; order.expand_shipment=false; order.expand_inventory=true; order.expand_customer=false;"
-                ng-init="order.expand_product=false;"/> 
+                ng-init="order.expand_inventory=false;"/> 
           <img  ng-class="{
                 'app_icon_medium': order.expand_customer===false || order.expand===false, 
                 'app_icon_medium_active': order.expand_customer===true && order.expand===true
@@ -138,7 +148,7 @@
                 src="img/customer.png"
                 ng-click="order.expand=true;
                 order.expand_edit=false; order.expand_product=false; order.expand_shipment=false; order.expand_inventory=false; order.expand_customer=true;"
-                ng-init="order.expand_product=false;"/> 
+                ng-init="order.expand_customer=false;"/> 
           <img  class="app_icon_medium"
                 ng-click="newApp()"
                 src="img/add_link.png"/> 

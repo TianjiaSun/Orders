@@ -699,3 +699,39 @@ position: relative;
   left: 0px;
   margin: 0px;
 }
+
+.shipped_no {
+  position: absolute;
+  top: 0px;
+  left: 360px;
+  width: 112px;
+  height: 70px;
+  opacity: 0;
+}
+
+.shipped_yes {
+  position: absolute;
+  top: 5px;
+  left: 360px;
+  width: 105px;
+  height: 65px;
+  opacity: 0.8;
+}
+
+.cancelled_no {
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  width: 112px;
+  height: 70px;
+  opacity: 0;
+}
+
+.cancelled_yes {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  width: 105px;
+  height: 65px;
+  opacity: 0.8;
+}
