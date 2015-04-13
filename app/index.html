@@ -47,7 +47,7 @@
         'fadeIn': true,
         'fadeIn-100ms': true}" 
         ng-click="showOrders()">
-        Orders (4)
+        Opens (4)
       </div>
       <div ng-class="{
         'category_unit_selected': showShipped_flag===true,
@@ -88,7 +88,8 @@
       <!-- This is order brief info -->
       <div 
         class="order_content"       
-        ng-click="order.expand=!order.expand;">
+        ng-click="order.expand=!order.expand; 
+        order.expand_edit=true; order.expand_product=false; order.expand_shipment=false; order.expand_inventory=false; order.expand_customer=false;">
         <div class="order_time">02/11/2015 <span style="font-size: 13px;">13:43</span></div>
         <div class="order_from">Amazon  <span style="font-size: 12px;">#114-0684189-7053857</span></div>
         <img  ng-class="{
@@ -246,7 +247,7 @@
         </div>
 
         <div class="detail_container" ng-show="order.expand_inventory==true">
-          <div class="detail_header">Inventory Remain</div>
+          <div class="detail_header">Inventory</div>
         </div>
 
         <div class="detail_container" ng-show="order.expand_customer==true">
