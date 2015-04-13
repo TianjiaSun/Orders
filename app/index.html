@@ -82,7 +82,7 @@
       ng-class="{
         'order_unit': true, 
         'order_unit_expand': order.expand===true
-        }" 
+        }"
       ng-init="order.expand=false;">
 
       <!-- This is order brief info -->
@@ -158,7 +158,78 @@
       <div class="expand_container">
 
         <div class="detail_container" ng-show="order.expand_edit==true">
-          <div class="detail_header">Order Detail</div>
+          <div class="detail_block fadeIn fadeIn-50ms">
+            <div class="detail_block_header">Channel</div>
+            <div class="detail_block_content">
+              <div class="detail_block_content_header">Amazon:</div>
+              <div class="detail_block_content_details">
+                02/11/2015 13:43
+              </div>
+              <div class="detail_block_content_header">Order#:</div>
+              <div class="detail_block_content_details">
+                114-0684189-7053857
+              </div>
+            </div>
+          </div>
+          <div class="detail_block fadeIn fadeIn-50ms">
+            <div class="detail_block_header">Item(s)</div>
+            <div class="detail_block_content">
+              <div class="detail_block_content_header">X1:</div>
+              <div class="detail_block_content_details_hoverable">
+                Kate Spade New York Cedar Street Handle Handbag
+              </div>
+              <div class="detail_block_content_header">X2:</div>
+              <div class="detail_block_content_details_hoverable">
+                MyLux® Fashion Designer Office Tote Shoulder Handbag 507580
+              </div>
+            </div>
+          </div>
+          <div class="detail_block fadeIn fadeIn-50ms">
+            <div class="detail_block_header">Payment</div>
+            <div class="detail_block_content">
+              <div class="detail_block_content_header">Method:</div>
+              <div class="detail_block_content_details">
+                MasterCard ending in 8755
+              </div>
+              <div class="detail_block_content_header">Total Amount:</div>
+              <div class="detail_block_content_details">
+                $123.00 Approved
+              </div>
+            </div>
+          </div>
+          <div class="detail_block fadeIn fadeIn-50ms">
+            <div class="detail_block_header">Shipping</div>
+            <div class="detail_block_content">
+              <div class="detail_block_content_header">Tracking:</div>
+              <div class="detail_block_content_details_hoverable">
+                in Warehouse
+              </div>
+              <div class="detail_block_content_header">Shipping Address:</div>
+              <div class="detail_block_content_details_hoverable">
+                Dr. Thomas Sun</br>
+                4275 BURTON DR</br>
+                SANTA CLARA, CA 95054-1512</br>
+                United States</br>
+              </div>
+            </div>
+          </div>
+          <div class="detail_block fadeIn fadeIn-50ms">
+            <div class="detail_block_header">Summary</div>
+            <div class="detail_block_content">
+              <div class="detail_block_content_header">Item(s): </div>
+              <div class="detail_block_content_right">
+                $123.00
+              </div>
+              <div class="detail_block_content_header">Shipping:</div>
+              <div class="detail_block_content_right">
+                $0.00
+              </div>
+              <div class="detail_block_content_header">Total:</div>
+              <div class="detail_block_content_right">
+                $123.00
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="detail_container" ng-show="order.expand_product==true">
