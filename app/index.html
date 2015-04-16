@@ -217,7 +217,7 @@
           <div class="detail_block fadeIn fadeIn-50ms">
             <div class="detail_block_header">Summary</div>
             <div class="detail_block_content">
-              <div class="detail_block_content_header">Item(s): </div>
+              <div class="detail_block_content_header">Item(s):</div>
               <div class="detail_block_content_right">
                 $123.00
               </div>
@@ -233,6 +233,7 @@
           </div>
         </div>
 
+        <!-- product plugview -->
         <div class="detail_container" ng-show="order.expand_product==true">
           <iframe class="Products_plugview_container fadeIn fadeIn-50ms" frameBorder="0"
             src="http://tianjiasun.github.io/Products_plugview/app/index.html#/open=1"></iframe>
@@ -242,8 +243,54 @@
           <div class="Product_count fadeIn fadeIn-50ms">X2</div>
         </div>
 
+        <!-- shipment -->
         <div class="detail_container" ng-show="order.expand_shipment==true">
-          <div class="detail_header">Shipment & Tracking</div>
+          <div class="shipment_container">
+            <div class="shipment_condition_container">
+
+            </div>
+
+            <div class="case_container fadeIn fadeIn-50ms">
+              <div class="shipping_option_title">Input Precise Weight</div>
+              <img class="scale" src="img/scale.png"/>
+<!--               <input class="weight_input" value="2.3 Pound"></input>
+              <div class="OR">OR</div>
+              <img class="weight_measure_button" src="img/measure_button.png"/> -->
+              <div class="nearest_site"><span style="text-decoration:underline">This might be a oversized package</span></div>
+            </div>
+
+            <div class="one_shipping_option fadeIn fadeIn-50ms">
+              <div class="shipping_option_title">Optimized Option 1</div>
+              <img class="option_img" src="img/ups_img.png"/>
+              <div class="option_price">$5.67</div>
+              <div class="option_detail">See details</div>
+              <div class="nearest_site">Drop package <span style="text-decoration:underline">here</span></div>
+            </div>
+
+            <div class="one_shipping_option fadeIn fadeIn-50ms">
+              <div class="shipping_option_title">Option 2</div>
+              <img class="option_img" src="img/fedex_img.png"/>
+              <div class="option_price">$6.51</div>
+              <div class="option_detail">See details</div>
+              <div class="nearest_site">Drop package <span style="text-decoration:underline">here</span></div>
+            </div>
+
+            <div class="one_shipping_option fadeIn fadeIn-50ms">
+              <div class="shipping_option_title">Option 3</div>
+              <img class="option_img" src="img/usps_img.png"/>
+              <div class="option_price">$7.12</div>a
+              <div class="option_detail">See details</div>
+              <div class="nearest_site">Drop package <span style="text-decoration:underline">here</span></div>
+            </div>
+
+            <div class="one_shipping_option fadeIn fadeIn-50ms">
+              <div class="shipping_option_title">Find Another Option</div>
+              <img class="add_option_img" src="img/add_option.png"/>
+              <div class="parcel_company"><span style="text-decoration:underline">I am a parcel company</span></div>
+            </div>
+
+
+          </div>
         </div>
 
         <div class="detail_container" ng-show="order.expand_inventory==true">
