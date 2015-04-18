@@ -593,9 +593,10 @@ position: relative;
   position: relative;
   float: left;
   top: 13px;
-  left: -25px;
+  left: -28px;
   width: 51px;
   height: 45px;
+  font-weight: bold;
   background: rgb(232, 232, 232);
   border-top-right-radius: 100%;
   border-bottom-right-radius: 100%;
@@ -603,8 +604,8 @@ position: relative;
   padding-left: 0px;
   text-align: center;
   font-family: arial;
-  font-size: 20px;
-  color: rgb(98, 98, 98);
+  font-size: 23px;
+  color: rgb(5, 145, 240);
   margin-right: -12px;
 }
 
@@ -910,11 +911,21 @@ position: relative;
   border-radius: 10px;
   box-shadow: 0 0 4px rgb(51, 51, 51);
   overflow: hidden;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  transition-delay: 0s;
 }
 
 .one_shipping_option:hover {
   box-shadow: 0 0 6px 1px rgb(30, 30, 30);
   cursor: pointer;
+  -webkit-transform: scale(1.02) rotate(2deg);
+  -moz-transform: scale(1.02) rotate(2deg);
+  -o-transform: scale(1.02) rotate(2deg);
+  -ms-transform: scale(1.02) rotate(2deg);
+  transform: scale(1.02) rotate(2deg);
 }
 
 .shipping_option_title {
@@ -1006,7 +1017,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#748a99', end
 
 .nearest_site {
   position: absolute;
-  bottom: 9px;
+  bottom: 8px;
   left: 0px;
   width: 100%;
   font-size: 14px;
@@ -1057,20 +1068,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#748a99', end
   height: 56px;
   background: rgb(106, 180, 229);
   font-family: arial;
-  font-size: 21px;
+  font-size: 22px;
   text-align: center;
   color: white;
-  line-height: 33px;
+  line-height: 39px;
   opacity: 1;
 }
 
-.one_shipping_option:hover .option_price{
-  background:#e6a009;
+/*.one_shipping_option:hover .option_price{
+  background:#80d1c5;
 }
 
 .one_shipping_option:hover .shipping_option_title{
-  background:#e6a009;
-}
+  background:#80d1c5;
+}*/
 
 .add_option_img {
   position: absolute;
@@ -1100,29 +1111,61 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#748a99', end
 
 .weight_input {
   position: absolute;
-  top: 40px;
+  top: 44px;
   left: 40px;
   width: calc(100% - 80px);
-  height: 30px;
-  line-height: 30px;
+  height: 34px;
+  line-height: 34px;
   text-decoration: none;
   font-family: arial;
-  font-size: 19px;
+  font-size: 20px;
   font-weight: bold;
-  border-width: 0px;
+  border-width: 3px;
   border-style: none;
   outline: none;
   text-align: center;
-  color: rgb(105, 105, 105);
-  background: rgb(255, 255, 255);
-  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  background: #80d1c5;
+  border-style: solid;
+  border-radius: 35px;
   box-shadow: 0 0 6px rgb(103, 103, 103);
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  transition-delay: 0s;
+}
+
+.weight_input:hover {
+  box-shadow: 0 0 8px 1px black;
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .scale {
   position: absolute;
-  top: calc(50% - 100px);
-  left: calc(50% - 100px);
-  width: 200px;
-  height: 200px;
+  top: calc(50% - 20px);
+  left: calc(50% - 43px);
+  width: 86px;
+  height: 86px;
+  border-radius: 20px;
+  box-shadow: 0 0 6px rgb(103, 103, 103);
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  transition-delay: 0s;
+}
+
+.scale:hover {
+  cursor: pointer;
+  box-shadow: 0 0 8px 1px black;
+  -webkit-transform: scale(1.1) rotate(6deg);
+  -moz-transform: scale(1.1) rotate(6deg);
+  -o-transform: scale(1.1) rotate(6deg);
+  -ms-transform: scale(1.1) rotate(6deg);
+  transform: scale(1.1) rotate(6deg);
 }
