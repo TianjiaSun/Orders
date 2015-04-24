@@ -152,7 +152,8 @@
                 ng-init="order.expand_customer=false;"/> 
           <img  class="app_icon_medium"
                 ng-click="newApp()"
-                src="img/add_link.png"/> 
+                src="img/add_link.png"
+                ng-click="addLink()"/> 
       </div>
 
       <!-- This is expand containers -->
@@ -252,8 +253,8 @@
 
             <div class="case_container fadeIn fadeIn-50ms">
               <div class="shipping_option_title">Measure Weight</div>
-              <img class="scale fadeIn fadeIn-50ms fadeIn-Delay-50ms" src="img/scale.png"/>
-              <input class="weight_input fadeIn fadeIn-50ms fadeIn-Delay-50ms" value="2.3 Pound"></input>
+              <img class="scale fadeIn fadeIn-50ms" src="img/scale.png"/>
+              <input class="weight_input fadeIn fadeIn-50ms" value="2.3 Pound"></input>
               <div class="nearest_site"><span style="text-decoration:underline">An Oversized Package?</span></div>
             </div>
 
@@ -289,7 +290,10 @@
         </div>
 
         <div class="detail_container" ng-show="order.expand_inventory==true">
-          <div class="detail_header">Inventory</div>
+          <iframe class="Products_plugview_container fadeIn fadeIn-50ms" frameBorder="0"
+            src="http://tianjiasun.github.io/Inventory_plugview/app/index.html#/open=1"></iframe>
+          <iframe class="Products_plugview_container fadeIn fadeIn-50ms" frameBorder="0"
+            src="http://tianjiasun.github.io/Inventory_plugview/app/index.html#/open=2"></iframe>
         </div>
 
         <div class="detail_container" ng-show="order.expand_customer==true">
