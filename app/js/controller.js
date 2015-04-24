@@ -25,7 +25,7 @@ var store = angular.module('store',['ngRoute'])
   $scope.addLink = function() {
     var payload = {
       op: 'addLink',
-      originAppId: 'Customers'
+      originAppId: 'Orders'
     };
     var targetUrl = (window.location != window.parent.location) ? document.referrer: document.location;
     parent.postMessage(payload, targetUrl);
